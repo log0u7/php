@@ -277,7 +277,7 @@ Legend:
 > - "-" - Not exists in this version
 > Some extensions may not be available in [`-dev`](#-dev) and [`-debug`](#-debug) images  
 
-Extensions xdebug, blackfire and xhprof disabled by default.
+Extensions xdebug, blackfire and xhprof are disabled by default.
 
 ## Tools
 
@@ -288,7 +288,7 @@ Extensions xdebug, blackfire and xhprof disabled by default.
 
 ## Changelog
 
-Changes per stability tag reflected in git tags description under [releases](https://github.com/log0u7/python/releases).
+Changes per stability tag reflected in git tags description under [releases](https://github.com/log0u7/php/releases).
 
 ## Crond
 
@@ -323,19 +323,19 @@ See https://github.com/log0u7/php/issues/22 for more details.
 
 ## Complete PHP-based stacks
 
-- [wodby/docker4php](https://github.com/log0u7/docker4php)
-- [wodby/docker4drupal](https://github.com/log0u7/docker4drupal)
-- [wodby/docker4wordpress](https://github.com/log0u7/docker4wordpress)
+- [log0u7/docker-php-stack](https://github.com/log0u7/docker-php-stack)
+- [log0u7/docker-drupal-stack](https://github.com/log0u7/docker-drupal-stack)
+- [log0u7/docker-wordpress-stack](https://github.com/log0u7/docker-wordpress-stack)
 
-## Images based on `wodby/php`
+## Images based on `log0u7/php`
 
-- [wodby/drupal-php](https://github.com/log0u7/drupal-php)
-- [wodby/wordpress-php](https://github.com/log0u7/wordpress-php)
-- [wodby/adminer](https://github.com/log0u7/adminer)
-- [wodby/matomo](https://github.com/log0u7/matomo)
-- [wodby/cachet](https://github.com/log0u7/cachet)
-- [wodby/webgrind](https://github.com/log0u7/webgrind)
-- [wodby/xhprof](https://github.com/log0u7/xhprof)
+- [log0u7/drupal-php](https://github.com/log0u7/drupal-php)
+- [log0u7/wordpress-php](https://github.com/log0u7/wordpress-php)
+- [log0u7/adminer](https://github.com/log0u7/adminer)
+- [log0u7/matomo](https://github.com/log0u7/matomo)
+- [log0u7/cachet](https://github.com/log0u7/cachet)
+- [log0u7/webgrind](https://github.com/log0u7/webgrind)
+- [log0u7/xhprof](https://github.com/log0u7/xhprof)
 
 ## Orchestration Actions
 
@@ -470,7 +470,6 @@ default params values:
 [uuid]: https://pecl.php.net/package/uuid
 [xdebug]: https://pecl.php.net/package/xdebug
 [yaml]: https://pecl.php.net/package/yaml
-[latest]: https://github.com/log0u7/pecl-php-uploadprogress/releases/tag/latest
 [7.0.5]: https://pecl.php.net/package/ZendOpcache
 [1.0.1]: https://pecl.php.net/package/mcrypt
 [blackfire]: https://blackfire.io/dashboard/mine/profiles

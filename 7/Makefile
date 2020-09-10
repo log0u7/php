@@ -6,8 +6,8 @@ PHP_VER_MINOR ?= $(shell echo "${PHP_VER}" | grep -oE '^[0-9]+\.[0-9]+')
 REPO = log0u7/php
 NAME = php-$(PHP_VER_MINOR)
 
-WODBY_USER_ID ?= 1000
-WODBY_GROUP_ID ?= 1000
+DEPLOY_USER_ID ?= 1000
+DEPLOY_GROUP_ID ?= 1000
 
 PECL_HTTP_PROXY ?= ""
 
