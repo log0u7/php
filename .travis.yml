@@ -1,0 +1,37 @@
+language: bash
+
+services:
+  - docker
+
+env:
+  global:
+  - PHP74=7.4.10
+  - PHP73=7.3.22
+  - PHP72=7.2.33
+  matrix:
+  - PHP_VER="${PHP74}" TAGS=7.4,7,latest
+  - PHP_VER="${PHP73}" TAGS=7.3
+  - PHP_VER="${PHP72}" TAGS=7.2
+  - PHP_VER="${PHP74}" PHP_DEV=1 TAGS=7.4-dev,7-dev,dev
+  - PHP_VER="${PHP73}" PHP_DEV=1 TAGS=7.3-dev
+  - PHP_VER="${PHP72}" PHP_DEV=1 TAGS=7.2-dev
+  - PHP_VER="${PHP74}" PHP_DEV=1 DEPLOY_USER_ID=501 DEPLOY_GROUP_ID=20 TAGS=7.4-dev-macos,7-dev-macos,dev-macos
+  - PHP_VER="${PHP73}" PHP_DEV=1 DEPLOY_USER_ID=501 DEPLOY_GROUP_ID=20 TAGS=7.3-dev-macos
+  - PHP_VER="${PHP72}" PHP_DEV=1 DEPLOY_USER_ID=501 DEPLOY_GROUP_ID=20 TAGS=7.2-dev-macos
+
+script:
+- set -e
+- cd "${PHP_VER:0:1}" || cd "${PHP_VER:0:3}"
+- make check-configs
+- travis_retry make
+- make test
+
+after_success:
+- . "${TRAVIS_BUILD_DIR}/release.sh"
+
+notifications:
+  email:
+    recipients:
+    - "${EMAIL_ACCOUNT}"
+    on_success: never
+    on_failure: always
