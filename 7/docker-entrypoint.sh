@@ -6,7 +6,7 @@ if [[ -n "${DEBUG}" ]]; then
     set -x
 fi
 
-ssh_dir=/home/wodby/.ssh
+ssh_dir=/home/deploy/.ssh
 
 _gotpl() {
     if [[ -f "/etc/gotpl/$1" ]]; then
@@ -72,7 +72,7 @@ process_templates() {
     _gotpl "docker-php-ext-opcache.ini.tmpl" "${PHP_INI_DIR}/conf.d/docker-php-ext-opcache.ini"
 
     _gotpl "zz-www.conf.tmpl" "/usr/local/etc/php-fpm.d/zz-www.conf"
-    _gotpl "wodby.settings.php.tmpl" "${CONF_DIR}/wodby.settings.php"
+    _gotpl "deploy.settings.php.tmpl" "${CONF_DIR}/deploy.settings.php"
     _gotpl "ssh_config.tmpl" "${ssh_dir}/config"
     _gotpl "gitconfig.tmpl" "/etc/gitconfig"
 }
