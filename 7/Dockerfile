@@ -198,24 +198,24 @@ RUN set -xe; \
         pear config-set http_proxy "${PECL_HTTP_PROXY}"; \
     fi; \
     \
-    # NewRelic extension and agent.
-    newrelic_url="http://download.newrelic.com/php_agent/release/"; \
-    wget -r -nd --no-parent -P /tmp/newrelic -Alinux-musl.tar.gz "${newrelic_url}" >/dev/null 2>&1; \
-    tar -xzf /tmp/newrelic/newrelic-php*.tar.gz --strip=1 -C /tmp/newrelic; \
-    export NR_INSTALL_SILENT=true; \
-    export NR_INSTALL_USE_CP_NOT_LN=true; \
-    bash /tmp/newrelic/newrelic-install install; \
-    rm /usr/local/etc/php/conf.d/newrelic.ini; \
-    mkdir -p /var/log/newrelic/; \
-    chown -R www-data:www-data /var/log/newrelic/; \
-    chmod -R 775 /var/log/newrelic/; \
-    \
-    # Microsoft ODBC driver for SQL Server
-    curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/msodbcsql17_17.6.1.1-1_amd64.apk && \
-    apk add --allow-untrusted msodbcsql17_17.6.1.1-1_amd64.apk; \
-    curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/mssql-tools_17.6.1.1-1_amd64.apk && \
-    apk add --allow-untrusted mssql-tools_17.6.1.1-1_amd64.apk; \
-    rm ./*.apk; \
+#    # NewRelic extension and agent.
+#    newrelic_url="http://download.newrelic.com/php_agent/release/"; \
+#    wget -r -nd --no-parent -P /tmp/newrelic -Alinux-musl.tar.gz "${newrelic_url}" >/dev/null 2>&1; \
+#    tar -xzf /tmp/newrelic/newrelic-php*.tar.gz --strip=1 -C /tmp/newrelic; \
+#    export NR_INSTALL_SILENT=true; \
+#    export NR_INSTALL_USE_CP_NOT_LN=true; \
+#    bash /tmp/newrelic/newrelic-install install; \
+#    rm /usr/local/etc/php/conf.d/newrelic.ini; \
+#    mkdir -p /var/log/newrelic/; \
+#    chown -R www-data:www-data /var/log/newrelic/; \
+#    chmod -R 775 /var/log/newrelic/; \
+#    \
+#    # Microsoft ODBC driver for SQL Server
+#    curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/msodbcsql17_17.6.1.1-1_amd64.apk && \
+#    apk add --allow-untrusted msodbcsql17_17.6.1.1-1_amd64.apk; \
+#    curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/mssql-tools_17.6.1.1-1_amd64.apk && \
+#    apk add --allow-untrusted mssql-tools_17.6.1.1-1_amd64.apk; \
+#    rm ./*.apk; \
     \
     pecl install \
         amqp-1.10.2 \
@@ -265,26 +265,26 @@ RUN set -xe; \
     # http://osmanov-dev-notes.blogspot.com/2013/07/fixing-php-start-up-error-unable-to.html
     mv /usr/local/etc/php/conf.d/docker-php-ext-event.ini /usr/local/etc/php/conf.d/z-docker-php-ext-event.ini; \
     \
-    # Blackfire extension (they have free tier).
-    mkdir -p /tmp/blackfire; \
-    version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;"); \
-    blackfire_url="https://blackfire.io/api/v1/releases/probe/php/alpine/amd64/${version}"; \
-    wget -qO- "${blackfire_url}" | tar xz --no-same-owner -C /tmp/blackfire; \
-    mv /tmp/blackfire/blackfire-*.so $(php -r "echo ini_get('extension_dir');")/blackfire.so; \
-    \
-    # Wodby Uploadprogress.
-    #mkdir -p /usr/src/php/ext/uploadprogress; \
-    #up_url="https://github.com/wodby/pecl-php-uploadprogress/archive/latest.tar.gz"; \
-    #wget -qO- "${up_url}" | tar xz --strip-components=1 -C /usr/src/php/ext/uploadprogress; \
-    #docker-php-ext-install uploadprogress; \
-    #\
-    # Tideways xhprof.
-    xhprof_ext_ver="5.0-beta3"; \
-    mkdir -p /usr/src/php/ext/tideways_xhprof; \
-    xhprof_url="https://github.com/tideways/php-xhprof-extension/archive/v${xhprof_ext_ver}.tar.gz"; \
-    wget -qO- "${xhprof_url}" | tar xz --strip-components=1 -C /usr/src/php/ext/tideways_xhprof; \
-    docker-php-ext-install tideways_xhprof; \
-    \
+#    # Blackfire extension (they have free tier).
+#    mkdir -p /tmp/blackfire; \
+#    version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;"); \
+#    blackfire_url="https://blackfire.io/api/v1/releases/probe/php/alpine/amd64/${version}"; \
+#    wget -qO- "${blackfire_url}" | tar xz --no-same-owner -C /tmp/blackfire; \
+#    mv /tmp/blackfire/blackfire-*.so $(php -r "echo ini_get('extension_dir');")/blackfire.so; \
+#    \
+#    # Wodby Uploadprogress.
+#    #mkdir -p /usr/src/php/ext/uploadprogress; \
+#    #up_url="https://github.com/wodby/pecl-php-uploadprogress/archive/latest.tar.gz"; \
+#    #wget -qO- "${up_url}" | tar xz --strip-components=1 -C /usr/src/php/ext/uploadprogress; \
+#    #docker-php-ext-install uploadprogress; \
+#    #\
+#    # Tideways xhprof.
+#    xhprof_ext_ver="5.0-beta3"; \
+#    mkdir -p /usr/src/php/ext/tideways_xhprof; \
+#    xhprof_url="https://github.com/tideways/php-xhprof-extension/archive/v${xhprof_ext_ver}.tar.gz"; \
+#    wget -qO- "${xhprof_url}" | tar xz --strip-components=1 -C /usr/src/php/ext/tideways_xhprof; \
+#    docker-php-ext-install tideways_xhprof; \
+#    \
     wget -qO- https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer; \
     \
     # Install Walter (deprecated).

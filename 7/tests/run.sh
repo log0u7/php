@@ -6,7 +6,7 @@ if [[ -n "${DEBUG}" ]]; then
     set -x
 fi
 
-git_url=https://github.com/wodby/php.git
+git_url=https://github.com/log0u7/php.git
 
 wait_for_cron() {
     executed=0
@@ -46,14 +46,14 @@ docker_exec php tests.sh
 
 # SSH
 echo -n "Testing ssh... "
-docker_exec php touch /home/wodby/.ssh/known_hosts
-docker_exec php ssh wodby@sshd cat /home/wodby/.ssh/authorized_keys | grep -q admin@example.com
+docker_exec php touch /home/deploy/.ssh/known_hosts
+docker_exec php ssh deploy@sshd cat /home/deploy/.ssh/authorized_keys | grep -q admin@example.com
 echo "OK"
 
 # Git actions
 echo -n "Running git actions... "
 run_action php git-clone url="${git_url}" branch=master
-run_action php git-checkout target=develop
+#run_action php git-checkout target=devel
 echo "OK"
 
 # PHP-FPM

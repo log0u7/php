@@ -5,25 +5,25 @@
  */
 
 {{ if getenv "WODBY_HOSTS" }}{{ range jsonArray (getenv "WODBY_HOSTS") }}
-$wodby['hosts'][] = '{{ . }}';
+$deploy['hosts'][] = '{{ . }}';
 {{ end }}{{ end }}
 
-$wodby['files_dir'] = '{{ getenv "FILES_DIR" }}';
+$deploy['files_dir'] = '{{ getenv "FILES_DIR" }}';
 
-$wodby['db']['host'] = '{{ getenv "DB_HOST" }}';
-$wodby['db']['name'] = '{{ getenv "DB_NAME" }}';
-$wodby['db']['username'] = '{{ getenv "DB_USER" }}';
-$wodby['db']['password'] = '{{ getenv "DB_PASSWORD" }}';
-$wodby['db']['driver'] = '{{ getenv "DB_DRIVER" }}';
+$deploy['db']['host'] = '{{ getenv "DB_HOST" }}';
+$deploy['db']['name'] = '{{ getenv "DB_NAME" }}';
+$deploy['db']['username'] = '{{ getenv "DB_USER" }}';
+$deploy['db']['password'] = '{{ getenv "DB_PASSWORD" }}';
+$deploy['db']['driver'] = '{{ getenv "DB_DRIVER" }}';
 
-$wodby['redis']['host'] = '{{ getenv "REDIS_HOST" }}';
-$wodby['redis']['port'] = '{{ getenv "REDIS_PORT" "6379" }}';
-$wodby['redis']['password'] = '{{ getenv "REDIS_PASSWORD" }}';
+$deploy['redis']['host'] = '{{ getenv "REDIS_HOST" }}';
+$deploy['redis']['port'] = '{{ getenv "REDIS_PORT" "6379" }}';
+$deploy['redis']['password'] = '{{ getenv "REDIS_PASSWORD" }}';
 
-$wodby['varnish']['host'] = '{{ getenv "VARNISH_HOST" }}';
-$wodby['varnish']['terminal_port'] = '{{ getenv "VARNISH_TERMINAL_PORT" "6082" }}';
-$wodby['varnish']['secret'] = '{{ getenv "VARNISH_SECRET" }}';
-$wodby['varnish']['version'] = '{{ getenv "VARNISH_VERSION" }}';
+$deploy['varnish']['host'] = '{{ getenv "VARNISH_HOST" }}';
+$deploy['varnish']['terminal_port'] = '{{ getenv "VARNISH_TERMINAL_PORT" "6082" }}';
+$deploy['varnish']['secret'] = '{{ getenv "VARNISH_SECRET" }}';
+$deploy['varnish']['version'] = '{{ getenv "VARNISH_VERSION" }}';
 
-$wodby['memcached']['host'] = '{{ getenv "MEMCACHED_HOST" }}';
-$wodby['memcached']['port'] = '{{ getenv "MEMCACHED_PORT" "11211" }}';
+$deploy['memcached']['host'] = '{{ getenv "MEMCACHED_HOST" }}';
+$deploy['memcached']['port'] = '{{ getenv "MEMCACHED_PORT" "11211" }}';

@@ -11,8 +11,8 @@ tmp_dir="/tmp/source"
 
 get_archive "${source}" "${tmp_dir}" "zip tgz tar.gz tar"
 
-# TODO: allow top level dir import only for wodby archives.
-if [[ -f "${tmp_dir}/.wodby" || (-d "${tmp_dir}/private" && -d "${tmp_dir}/public") ]]; then
+# TODO: allow top level dir import only for deploy archives.
+if [[ -f "${tmp_dir}/.deploy" || (-d "${tmp_dir}/private" && -d "${tmp_dir}/public") ]]; then
     echo "Wodby backup archive detected. Importing to top directory"
     sudo files_sync "${tmp_dir}/" "${FILES_DIR}"
 else
